@@ -41,11 +41,13 @@ dependencies {
     //xrecyclerview
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
 }
-configurations.all {     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    def requested = details.requested
-    if (requested.group == 'com.android.support') {
-        if (!requested.name.startsWith("multidex")) {
-            details.useVersion '27.1.1'    //此处填写你项目使用的sdk版本
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.1.1'    //此处填写你项目使用的sdk版本
+            }
         }
     }
-} }
+}

@@ -47,20 +47,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Glide.with(context).load(split[0]).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onitemClick.onItemViewClick(v,position);
-            }
-        });
+        @Override
+        public void onClick(View v) {
+            onitemClick.onItemViewClick(v,position);
+        }
+    });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onitemClick.onLongItemViewClick(v,position);
-                return true;
-            }
-        });
+        @Override
+        public boolean onLongClick(View v) {
+            onitemClick.onLongItemViewClick(v,position);
+            return true;
+        }
+    });
 
-    }
+}
 
     @Override
     public int getItemCount() {

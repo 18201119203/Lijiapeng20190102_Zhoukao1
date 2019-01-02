@@ -125,6 +125,7 @@ public class NetWorkUtils {
             @Override
             public void run() {
                 responseCallback.success(t);
+                responseCallback.successYiang(t);
             }
         });
     }

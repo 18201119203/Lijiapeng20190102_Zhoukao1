@@ -20,6 +20,7 @@ public class ShopBean {
                 public String images;
                 public String price;
                 public String title;
+                public int pid;
             }
 
         }

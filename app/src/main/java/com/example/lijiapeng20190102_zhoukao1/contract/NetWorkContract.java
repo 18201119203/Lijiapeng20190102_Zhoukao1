@@ -1,6 +1,7 @@
 package com.example.lijiapeng20190102_zhoukao1.contract;
 
 import com.example.lijiapeng20190102_zhoukao1.bean.ShopBean;
+import com.example.lijiapeng20190102_zhoukao1.bean.ShopYiangBean;
 
 public interface NetWorkContract {
 
@@ -9,6 +10,7 @@ public interface NetWorkContract {
      */
     interface PresenterCallback{
         void success(ShopBean shopBean);
+        void successYiang(ShopYiangBean shopYiangBean);
         void onFailure(String s);
     }
 
@@ -17,6 +19,7 @@ public interface NetWorkContract {
      */
     interface requstCallback{
         void success(ShopBean shopBean);
+        void successYiang(ShopYiangBean shopYiangBean);
         void onFailure(String s);
     }
     /**
@@ -24,6 +27,7 @@ public interface NetWorkContract {
      */
     interface responseCallback{
         void success(Object o);
+        void successYiang(Object o);
         void onFailure(String s);
     }
 
