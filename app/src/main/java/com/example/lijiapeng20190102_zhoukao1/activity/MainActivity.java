@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.Toast;
-
 import com.example.lijiapeng20190102_zhoukao1.R;
 import com.example.lijiapeng20190102_zhoukao1.adapter.MyAdapter;
 import com.example.lijiapeng20190102_zhoukao1.bean.ShopBean;
@@ -13,11 +12,14 @@ import com.example.lijiapeng20190102_zhoukao1.contract.NetWorkContract;
 import com.example.lijiapeng20190102_zhoukao1.presenter.ShopPresenter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements NetWorkContract.requstCallback {
 
     private MyAdapter myAdapter;
     private String pid;
     private ShopPresenter shopPresenter;
+    private List<ShopBean.GetShop.GetData.GetInfo> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +38,16 @@ public class MainActivity extends AppCompatActivity implements NetWorkContract.r
         lv.setLayoutManager(new GridLayoutManager(this,3));
         myAdapter.onClick(new MyAdapter.onItemClick() {
             @Override
-            public void onItemViewClick(View v) {
+            public void onItemViewClick(View v,int position) {
+
+                Toast.makeText(MainActivity.this,"点击了条目",Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onLongItemViewClick(View v) {
+            public void onLongItemViewClick(View v,int position) {
+                list.remove(position);
+                myAdapter.setList(list);
+                Toast.makeText(MainActivity.this,"删除了条目",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements NetWorkContract.r
 
     @Override
     public void success(ShopBean shopBean) {
+        list = shopBean.data.tuijian.list;
         myAdapter.setList(shopBean.data.tuijian.list);
     }
 

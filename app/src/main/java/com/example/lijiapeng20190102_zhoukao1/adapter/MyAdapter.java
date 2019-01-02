@@ -39,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.price.setText(list.get(position).price);
         holder.title.setText(list.get(position).title);
@@ -49,14 +49,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onitemClick.onItemViewClick(v);
+                onitemClick.onItemViewClick(v,position);
             }
         });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                onitemClick.onLongItemViewClick(v);
-                return false;
+                onitemClick.onLongItemViewClick(v,position);
+                return true;
             }
         });
 
@@ -84,8 +84,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public interface onItemClick{
-        void onItemViewClick(View v);
-        void onLongItemViewClick(View v);
+        void onItemViewClick(View v,int position);
+        void onLongItemViewClick(View v,int position);
     }
 
 

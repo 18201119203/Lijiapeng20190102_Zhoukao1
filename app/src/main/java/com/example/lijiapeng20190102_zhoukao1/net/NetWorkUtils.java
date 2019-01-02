@@ -38,7 +38,6 @@ public class NetWorkUtils {
                 .readTimeout(5,TimeUnit.SECONDS)
                 .writeTimeout(5,TimeUnit.SECONDS)
                 .build();
-
     }
     /**
      * 单列
